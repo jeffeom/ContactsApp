@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		046295A6B98B2D858BBCB170 /* Pods_ContactsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005731897461C35A6E495071 /* Pods_ContactsApp.framework */; };
+		40667855215484C80037B573 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40667854215484C80037B573 /* AddContactViewController.swift */; };
 		40B30A81214B72CF00EF9D3F /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B30A80214B72CF00EF9D3F /* ContactsTableViewCell.swift */; };
+		40BFF46D21670A95008C73F4 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BFF46C21670A95008C73F4 /* CardCollectionViewCell.swift */; };
+		40BFF4702167195D008C73F4 /* UIColor+ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BFF46F2167195D008C73F4 /* UIColor+ThemeColor.swift */; };
 		40F2C8C9214B6E800065E969 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2C8C8214B6E800065E969 /* AppDelegate.swift */; };
 		40F2C8CB214B6E800065E969 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2C8CA214B6E800065E969 /* ContactsViewController.swift */; };
 		40F2C8CE214B6E800065E969 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40F2C8CC214B6E800065E969 /* Main.storyboard */; };
@@ -31,7 +34,10 @@
 
 /* Begin PBXFileReference section */
 		005731897461C35A6E495071 /* Pods_ContactsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContactsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		40667854215484C80037B573 /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
 		40B30A80214B72CF00EF9D3F /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
+		40BFF46C21670A95008C73F4 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		40BFF46F2167195D008C73F4 /* UIColor+ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ThemeColor.swift"; sourceTree = "<group>"; };
 		40F2C8C5214B6E800065E969 /* ContactsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40F2C8C8214B6E800065E969 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40F2C8CA214B6E800065E969 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +85,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		40BFF46B21670A61008C73F4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				40BFF46C21670A95008C73F4 /* CardCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		40BFF46E21671945008C73F4 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				40BFF46F2167195D008C73F4 /* UIColor+ThemeColor.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		40F2C8BC214B6E800065E969 = {
 			isa = PBXGroup;
 			children = (
@@ -102,8 +124,11 @@
 		40F2C8C7214B6E800065E969 /* ContactsApp */ = {
 			isa = PBXGroup;
 			children = (
+				40BFF46E21671945008C73F4 /* Extension */,
+				40BFF46B21670A61008C73F4 /* View */,
 				40F2C8C8214B6E800065E969 /* AppDelegate.swift */,
 				40F2C8CA214B6E800065E969 /* ContactsViewController.swift */,
+				40667854215484C80037B573 /* AddContactViewController.swift */,
 				40B30A80214B72CF00EF9D3F /* ContactsTableViewCell.swift */,
 				40F2C8CC214B6E800065E969 /* Main.storyboard */,
 				40F2C8D2214B6E820065E969 /* Assets.xcassets */,
@@ -340,9 +365,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40667855215484C80037B573 /* AddContactViewController.swift in Sources */,
+				40BFF4702167195D008C73F4 /* UIColor+ThemeColor.swift in Sources */,
 				40B30A81214B72CF00EF9D3F /* ContactsTableViewCell.swift in Sources */,
 				40F2C8D1214B6E800065E969 /* ContactsApp.xcdatamodeld in Sources */,
 				40F2C8CB214B6E800065E969 /* ContactsViewController.swift in Sources */,
+				40BFF46D21670A95008C73F4 /* CardCollectionViewCell.swift in Sources */,
 				40F2C8C9214B6E800065E969 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
