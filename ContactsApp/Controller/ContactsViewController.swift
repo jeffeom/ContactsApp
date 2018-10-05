@@ -65,8 +65,8 @@ extension ContactsViewController: UICollectionViewDelegate, UICollectionViewData
       cell.subTitleLabel.textColor = CardThemeType.blueyGrey.subtitleColor()
       cell.numberOfPeopleLabel.textColor = CardThemeType.blueyGrey.numberLabelColor()
     }
-    cell.titleLabel.text = contactsArray[indexPath.row]
-    cell.subTitleLabel.text = "Pikachu"
+    cell.titleLabel.text = "Urban One"
+    cell.subTitleLabel.text = contactsArray[indexPath.row]
     cell.numberOfPeopleLabel.text = "20"
     return cell
   }

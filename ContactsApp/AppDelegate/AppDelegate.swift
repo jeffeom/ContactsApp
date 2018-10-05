@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     if #available(iOS 11.0, *) {
       navigationController.navigationBar.prefersLargeTitles = true
     }
+    navigationController.view.backgroundColor = .white
+    UINavigationBar.appearance().shadowImage = UIImage()
+    UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
     self.window?.rootViewController = navigationController
     self.window?.makeKeyAndVisible()
     return true

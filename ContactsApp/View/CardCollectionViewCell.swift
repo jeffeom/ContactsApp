@@ -90,11 +90,13 @@ extension CardCollectionViewCell {
     contentView.layer.cornerRadius = 20
     contentView.clipsToBounds = true
     
-    titleLabel.font = UIFont.boldSystemFont(ofSize: 28)
+    titleLabel.font = UIFont.systemFont(ofSize: 28.0, weight: .bold)
     titleLabel.textColor = cellType.titleLabelColor()
+    titleLabel.minimumScaleFactor = 0.5
     
     subTitleLabel.font = UIFont.systemFont(ofSize: 18.0, weight: .medium)
     subTitleLabel.textColor = cellType.subtitleColor()
+    subTitleLabel.minimumScaleFactor = 0.5
     
     let titleStackView = UIStackView()
     titleStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -108,6 +110,7 @@ extension CardCollectionViewCell {
     let personImageView = UIImageView(image: UIImage(named: "user_icon_black"))
     numberOfPeopleLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
     numberOfPeopleLabel.textColor = cellType.numberLabelColor()
+    numberOfPeopleLabel.minimumScaleFactor = 0.5
 
     numberLabelStackView.addArrangedSubview(personImageView)
     numberLabelStackView.addArrangedSubview(numberOfPeopleLabel)
