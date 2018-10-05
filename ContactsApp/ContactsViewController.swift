@@ -20,6 +20,8 @@ class ContactsViewController: UIViewController {
     navigationItem.rightBarButtonItem = addButton
     let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
     layout.scrollDirection = .vertical
+    layout.headerReferenceSize = CGSize(width: self.view.frame.width, height: 10)
+    layout.footerReferenceSize = CGSize(width: self.view.frame.width, height: 10)
     contactsCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - 64), collectionViewLayout: layout)
     contactsCollectionView?.delegate = self
     contactsCollectionView?.dataSource = self
@@ -45,19 +47,31 @@ extension ContactsViewController: UICollectionViewDelegate, UICollectionViewData
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.identifier, for: indexPath) as! CardCollectionViewCell
-    // 0 3 6
-    // 1 4 7
-    // 2 5 8
     if indexPath.item == 0 || indexPath.item % 3 == 0 {
-      cell.cellType = .lightTeal
-    }else if indexPath.item % 2 == 1 {
-      cell.cellType = .charcoalGrey
+      //0, 3, 6, 9, 12, 14
+      cell.contentView.backgroundColor = .lightTeal()
+      cell.titleLabel.textColor = CardThemeType.lightTeal.titleLabelColor()
+      cell.subTitleLabel.textColor = CardThemeType.lightTeal.subtitleColor()
+      cell.numberOfPeopleLabel.textColor = CardThemeType.lightTeal.numberLabelColor()
     }else if indexPath.item % 3 == 1 {
-      cell.cellType = .blueyGrey
+      //1, 4, 7,
+      cell.contentView.backgroundColor = .charcoalGrey()
+      cell.titleLabel.textColor = CardThemeType.charcoalGrey.titleLabelColor()
+      cell.subTitleLabel.textColor = CardThemeType.charcoalGrey.subtitleColor()
+      cell.numberOfPeopleLabel.textColor = CardThemeType.charcoalGrey.numberLabelColor()
+    }else if indexPath.item % 3 == 2 {
+      cell.contentView.backgroundColor = .blueyGrey()
+      cell.titleLabel.textColor = CardThemeType.blueyGrey.titleLabelColor()
+      cell.subTitleLabel.textColor = CardThemeType.blueyGrey.subtitleColor()
+      cell.numberOfPeopleLabel.textColor = CardThemeType.blueyGrey.numberLabelColor()
     }
-    cell.title = contactsArray[indexPath.row]
-    cell.subtitle = "Pikachu"
-    cell.numberOfPeople = "20"
+    cell.titleLabel.text = contactsArray[indexPath.row]
+    cell.subTitleLabel.text = "Pikachu"
+    cell.numberOfPeopleLabel.text = "20"
     return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: collectionView.bounds.width - 32, height: CardCollectionViewCell.cellCustomHeight)
   }
 }

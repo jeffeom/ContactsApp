@@ -59,22 +59,18 @@ enum CardThemeType {
 }
 
 class CardCollectionViewCell: UICollectionViewCell {
-  static let cellCustomHeight = 128
+  static let cellCustomHeight: CGFloat = 128
   static let identifier = "CardCollectionViewCell"
   
   var cellType: CardThemeType = .blueyGrey
-  var title = ""
-  var subtitle = ""
-  var numberOfPeople = ""
   
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    translatesAutoresizingMaskIntoConstraints = false
-    setupCellView()
-  }
+  let titleLabel = UILabel()
+  let subTitleLabel = UILabel()
+  let numberOfPeopleLabel = UILabel()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
+    setupCellView()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -91,50 +87,50 @@ extension CardCollectionViewCell {
     layer.shadowOpacity = 0.25
     layer.shadowRadius = 2
     
-    let cellView = UIView(frame: self.frame)
-    cellView.backgroundColor = cellType.backgroundColor()
-    cellView.layer.cornerRadius = 20
-    cellView.clipsToBounds = true
+    contentView.layer.cornerRadius = 20
+    contentView.clipsToBounds = true
     
-    let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.width * 0.9, height: 35))
     titleLabel.font = UIFont.boldSystemFont(ofSize: 28)
     titleLabel.textColor = cellType.titleLabelColor()
-    titleLabel.text = title
     
-    let subTitleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.width * 0.9, height: 21))
     subTitleLabel.font = UIFont.systemFont(ofSize: 18.0, weight: .medium)
     subTitleLabel.textColor = cellType.subtitleColor()
-    subTitleLabel.text = subtitle
     
-    let titleStackView = UIStackView(frame:  CGRect(x: 0, y: 0, width: self.bounds.width * 0.9, height: 60))
+    let titleStackView = UIStackView()
+    titleStackView.translatesAutoresizingMaskIntoConstraints = false
     titleStackView.addArrangedSubview(titleLabel)
     titleStackView.addArrangedSubview(subTitleLabel)
-    titleStackView.alignment = .center
+    titleStackView.alignment = .leading
     titleStackView.distribution = .equalSpacing
     titleStackView.axis = .vertical
     
-    let numberLabelStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: 40, height: 35))
+    let numberLabelStackView = UIStackView()
     let personImageView = UIImageView(image: UIImage(named: "user_icon_black"))
-    let numberOfPeopleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 23, height: 21))
     numberOfPeopleLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
     numberOfPeopleLabel.textColor = cellType.numberLabelColor()
-    numberOfPeopleLabel.text = numberOfPeople
+
     numberLabelStackView.addArrangedSubview(personImageView)
     numberLabelStackView.addArrangedSubview(numberOfPeopleLabel)
     numberLabelStackView.alignment = .center
     numberLabelStackView.distribution = .equalSpacing
     numberLabelStackView.axis = .horizontal
+    numberLabelStackView.spacing = 5
     
-    let cellStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: self.bounds.width - 50, height: self.bounds.height - 33))
+    let cellStackView = UIStackView()
+    cellStackView.translatesAutoresizingMaskIntoConstraints = false
     cellStackView.addArrangedSubview(titleStackView)
     cellStackView.addArrangedSubview(numberLabelStackView)
-    cellStackView.alignment = .center
+    cellStackView.alignment = .trailing
     cellStackView.distribution = .equalSpacing
     cellStackView.axis = .vertical
     
-    cellView.addSubview(cellStackView)
-    cellStackView.centerXAnchor.constraint(equalTo: cellView.centerXAnchor)
-    cellStackView.centerYAnchor.constraint(equalTo: cellView.centerYAnchor)
-    self.addSubview(cellView)
+    titleStackView.widthAnchor.constraint(equalTo: cellStackView.widthAnchor, multiplier: 1.0).isActive = true
+    
+    contentView.addSubview(cellStackView)
+    cellStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+    cellStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+    cellStackView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1.0, constant: -50).isActive = true
+    cellStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 21.0).isActive = true
+    cellStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13.0).isActive = true
   }
 }
