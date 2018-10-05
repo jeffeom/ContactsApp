@@ -68,6 +68,8 @@ class CardCollectionViewCell: UICollectionViewCell {
   let subTitleLabel = UILabel()
   let numberOfPeopleLabel = UILabel()
   
+  var isAnimated = false
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     setupCellView()

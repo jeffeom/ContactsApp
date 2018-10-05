@@ -12,6 +12,10 @@ class ContactsViewController: UIViewController {
   var contactsCollectionView: UICollectionView?
   var contactsArray = ["Jeff", "Joon", "Peter"]
   
+  private var finishedLoadingInitialTableCells = false
+  
+  var lastIndexPath: IndexPath?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.translatesAutoresizingMaskIntoConstraints = false
@@ -34,7 +38,9 @@ class ContactsViewController: UIViewController {
 //MARK: UIButton
 extension ContactsViewController {
   @objc func pressedAddButton() {
+    finishedLoadingInitialTableCells = false
     contactsArray.append("Pikachu")
+    lastIndexPath = IndexPath(item: contactsArray.count - 1, section: 0)
     contactsCollectionView?.reloadData()
   }
 }
@@ -73,5 +79,31 @@ extension ContactsViewController: UICollectionViewDelegate, UICollectionViewData
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: collectionView.bounds.width - 32, height: CardCollectionViewCell.cellCustomHeight)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    var lastInitialDisplayableCell = false
+    //change flag as soon as last displayable cell is being loaded (which will mean table has initially loaded)
+    if contactsArray.count > 0 && !finishedLoadingInitialTableCells {
+      if let lastIndexPath = lastIndexPath {
+        if lastIndexPath.item == indexPath.item {
+          lastInitialDisplayableCell = true
+        }
+      }
+    }
+    
+    if !finishedLoadingInitialTableCells {
+      if lastInitialDisplayableCell {
+        finishedLoadingInitialTableCells = true
+      }
+      //animates the cell as it is being displayed for the first time
+      cell.transform = CGAffineTransform(translationX: 0, y: 128 / 2)
+      cell.alpha = 0
+      
+      UIView.animate(withDuration: 0.5, delay: 0.1 * Double(indexPath.item), options: [.curveEaseInOut], animations: {
+        cell.transform = CGAffineTransform(translationX: 0, y: 0)
+        cell.alpha = 1
+      }, completion: nil)
+    }
   }
 }
