@@ -14,22 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     window = UIWindow(frame: UIScreen.main.bounds)
     let mainController = ContactsViewController()
     let navigationController = UINavigationController(rootViewController: mainController)
     navigationController.navigationBar.isTranslucent = false
-    navigationController.navigationBar.titleTextAttributes = [
+    navigationController.navigationBar.prefersLargeTitles = true
+    navigationController.navigationBar.largeTitleTextAttributes = [
       NSAttributedString.Key.foregroundColor: UIColor.charcoalGrey()
     ]
-    if #available(iOS 11.0, *) {
-      navigationController.navigationBar.prefersLargeTitles = true
-      navigationController.navigationBar.largeTitleTextAttributes = [
-        NSAttributedString.Key.foregroundColor: UIColor.charcoalGrey()
-      ]
-    }
     navigationController.view.backgroundColor = .white
     UINavigationBar.appearance().shadowImage = UIImage()
     UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
