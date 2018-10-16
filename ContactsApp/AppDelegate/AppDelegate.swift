@@ -21,8 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let mainController = ContactsViewController()
     let navigationController = UINavigationController(rootViewController: mainController)
     navigationController.navigationBar.isTranslucent = false
+    navigationController.navigationBar.titleTextAttributes = [
+      NSAttributedString.Key.foregroundColor: UIColor.charcoalGrey()
+    ]
     if #available(iOS 11.0, *) {
       navigationController.navigationBar.prefersLargeTitles = true
+      navigationController.navigationBar.largeTitleTextAttributes = [
+        NSAttributedString.Key.foregroundColor: UIColor.charcoalGrey()
+      ]
     }
     navigationController.view.backgroundColor = .white
     UINavigationBar.appearance().shadowImage = UIImage()
