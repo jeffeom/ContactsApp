@@ -67,6 +67,7 @@ class CardCollectionViewCell: UICollectionViewCell {
   let titleLabel = UILabel()
   let subTitleLabel = UILabel()
   let numberOfPeopleLabel = UILabel()
+  var personImageView = UIImageView()
   
   var isAnimated = false
   
@@ -109,7 +110,11 @@ extension CardCollectionViewCell {
     titleStackView.axis = .vertical
     
     let numberLabelStackView = UIStackView()
-    let personImageView = UIImageView(image: UIImage(named: "user_icon_black"))
+    if cellType == .lightTeal || cellType == .blueyGrey {
+      personImageView = UIImageView(image: UIImage(named: "user_icon_black"))
+    }else {
+      personImageView = UIImageView(image: UIImage(named: "user_icon_white"))
+    }
     numberOfPeopleLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
     numberOfPeopleLabel.textColor = cellType.numberLabelColor()
     numberOfPeopleLabel.minimumScaleFactor = 0.5

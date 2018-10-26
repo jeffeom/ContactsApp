@@ -90,20 +90,26 @@ extension ContactsViewController: UICollectionViewDelegate, UICollectionViewData
     if indexPath.item == 0 || indexPath.item % 3 == 0 {
       //0, 3, 6, 9, 12, 14
       cell.contentView.backgroundColor = .lightTeal()
+      cell.cellType = .lightTeal
       cell.titleLabel.textColor = CardThemeType.lightTeal.titleLabelColor()
       cell.subTitleLabel.textColor = CardThemeType.lightTeal.subtitleColor()
       cell.numberOfPeopleLabel.textColor = CardThemeType.lightTeal.numberLabelColor()
+      cell.personImageView.image = UIImage(named: "user_icon_black")
     }else if indexPath.item % 3 == 1 {
       //1, 4, 7,
       cell.contentView.backgroundColor = .charcoalGrey()
+      cell.cellType = .charcoalGrey
       cell.titleLabel.textColor = CardThemeType.charcoalGrey.titleLabelColor()
       cell.subTitleLabel.textColor = CardThemeType.charcoalGrey.subtitleColor()
       cell.numberOfPeopleLabel.textColor = CardThemeType.charcoalGrey.numberLabelColor()
+      cell.personImageView.image = UIImage(named: "user_icon_white")
     }else if indexPath.item % 3 == 2 {
       cell.contentView.backgroundColor = .blueyGrey()
+      cell.cellType = .blueyGrey
       cell.titleLabel.textColor = CardThemeType.blueyGrey.titleLabelColor()
       cell.subTitleLabel.textColor = CardThemeType.blueyGrey.subtitleColor()
       cell.numberOfPeopleLabel.textColor = CardThemeType.blueyGrey.numberLabelColor()
+      cell.personImageView.image = UIImage(named: "user_icon_black")
     }
     if isFiltering {
       cell.titleLabel.text = "Urban One"
