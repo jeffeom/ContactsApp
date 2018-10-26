@@ -19,11 +19,28 @@ class ContactsViewController: UIViewController {
   
   var isFiltering = false
   
+  var addBarButton: UIBarButtonItem?
+  var settingBarButton: UIBarButtonItem?
+  var undoBarButton: UIBarButtonItem?
+  var doneButton: UIBarButtonItem?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Contacts"
-    let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(pressedAddButton))
-    navigationItem.rightBarButtonItem = addButton
+    let addButton = UIButton(type: .custom)
+    addButton.setImage(UIImage(named: "addPlus"), for: .normal)
+    addButton.frame = CGRect(x: 0, y: 0, width: 30, height: 25)
+    addButton.addTarget(self, action: #selector(pressedAddButton), for: .touchUpInside)
+    let addBarButton = UIBarButtonItem(customView: addButton)
+    
+    let settingButton = UIButton(type: .custom)
+    settingButton.setImage(UIImage(named: "settingGear"), for: .normal)
+    settingButton.frame = CGRect(x: 0, y: 0, width: 30, height: 25)
+    settingButton.addTarget(self, action: #selector(pressedSettingButton), for: .touchUpInside)
+    let settingBarButton = UIBarButtonItem(customView: settingButton)
+    
+    navigationItem.rightBarButtonItems = [addBarButton, settingBarButton]
+    
     let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
     layout.scrollDirection = .vertical
     layout.headerReferenceSize = CGSize(width: self.view.frame.width, height: 10)
@@ -72,6 +89,25 @@ extension ContactsViewController {
     contactsArray.append("Pikachu")
     lastIndexPath = IndexPath(item: contactsArray.count - 1, section: 0)
     contactsCollectionView?.reloadData()
+  }
+  
+  @objc func pressedSettingButton() {
+    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    alert.addAction(UIAlertAction(title: "Edit", style: .default , handler:{ (UIAlertAction) in
+      self.pressedToEdit()
+    }))
+    alert.addAction(UIAlertAction(title: "Settings", style: .destructive , handler:{ (UIAlertAction) in
+      print("User click Settings button")
+    }))
+    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction) in
+      print("User click Cancel button")
+    }))
+    self.present(alert, animated: true)
+  }
+  
+  func pressedToEdit() {
+    title = "Edit"
+    
   }
 }
 
