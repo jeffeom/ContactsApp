@@ -10,8 +10,8 @@ import UIKit
 
 class ContactsViewController: UIViewController {
   var contactsCollectionView: UICollectionView?
-  var contactsArray = ["Jeff", "Joon", "Peter"]
-  var filteredContactsArray = [String]()
+  var contactsArray = [ContactRoom]()
+  var filteredContactsArray = [ContactRoom]()
   
   private var finishedLoadingInitialTableCells = false
   
@@ -76,7 +76,7 @@ extension ContactsViewController: UISearchResultsUpdating {
       contactsCollectionView?.reloadData()
     }else {
       isFiltering = true
-      filteredContactsArray = contactsArray.filter({ $0.lowercased().range(of: searchController.searchBar.text?.lowercased() ?? "") != nil })
+      filteredContactsArray = contactsArray.filter({ $0.title!.lowercased().range(of: searchController.searchBar.text?.lowercased() ?? "") != nil })
       contactsCollectionView?.reloadData()
     }
   }
@@ -86,7 +86,10 @@ extension ContactsViewController: UISearchResultsUpdating {
 extension ContactsViewController {
   @objc func pressedAddButton() {
     finishedLoadingInitialTableCells = false
-    contactsArray.append("Pikachu")
+    let aRoom = ContactRoom()
+    aRoom.title = "Urban One"
+    aRoom.subTitle = "Pikachu"
+    contactsArray.append(aRoom)
     lastIndexPath = IndexPath(item: contactsArray.count - 1, section: 0)
     contactsCollectionView?.reloadData()
   }
@@ -148,11 +151,11 @@ extension ContactsViewController: UICollectionViewDelegate, UICollectionViewData
       cell.personImageView.image = UIImage(named: "user_icon_black")
     }
     if isFiltering {
-      cell.titleLabel.text = "Urban One"
-      cell.subTitleLabel.text = filteredContactsArray[indexPath.row]
+      cell.titleLabel.text = filteredContactsArray[indexPath.row].title
+      cell.subTitleLabel.text = filteredContactsArray[indexPath.row].subTitle
     }else {
-      cell.titleLabel.text = "Urban One"
-      cell.subTitleLabel.text = contactsArray[indexPath.row]
+      cell.titleLabel.text = contactsArray[indexPath.row].title
+      cell.subTitleLabel.text = contactsArray[indexPath.row].subTitle
     }
     cell.numberOfPeopleLabel.text = "20"
     return cell
@@ -198,5 +201,15 @@ extension ContactsViewController: UICollectionViewDelegate, UICollectionViewData
         cell.alpha = 1
       }, completion: nil)
     }
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let contactsRoomVC = ContactsRoomViewController()
+    if isFiltering {
+      contactsRoomVC.roomName = self.filteredContactsArray[indexPath.item].title!
+    }else {
+      contactsRoomVC.roomName = self.contactsArray[indexPath.item].title!
+    }
+    navigationController?.pushViewController(contactsRoomVC, animated: true)
   }
 }

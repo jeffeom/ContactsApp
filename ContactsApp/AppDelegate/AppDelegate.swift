@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       NSAttributedString.Key.foregroundColor: UIColor.charcoalGrey()
     ]
     navigationController.view.backgroundColor = .white
-    UINavigationBar.appearance().shadowImage = UIImage()
-    UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+    navigationController.navigationBar.setValue(true, forKey: "hidesShadow")
+    UINavigationBar.appearance().tintColor = .black
     self.window?.rootViewController = navigationController
     self.window?.makeKeyAndVisible()
     return true

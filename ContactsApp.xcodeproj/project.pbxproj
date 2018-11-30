@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		046295A6B98B2D858BBCB170 /* Pods_ContactsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005731897461C35A6E495071 /* Pods_ContactsApp.framework */; };
+		401F3B0B21B0F5DB00C6A710 /* ContactsRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401F3B0A21B0F5DB00C6A710 /* ContactsRoomViewController.swift */; };
+		401F3B0D21B0FAB400C6A710 /* ContactRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401F3B0C21B0FAB400C6A710 /* ContactRoom.swift */; };
 		40667855215484C80037B573 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40667854215484C80037B573 /* AddContactViewController.swift */; };
 		40BFF46D21670A95008C73F4 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BFF46C21670A95008C73F4 /* CardCollectionViewCell.swift */; };
 		40BFF4702167195D008C73F4 /* UIColor+ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BFF46F2167195D008C73F4 /* UIColor+ThemeColor.swift */; };
@@ -33,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		005731897461C35A6E495071 /* Pods_ContactsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContactsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		401F3B0A21B0F5DB00C6A710 /* ContactsRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsRoomViewController.swift; sourceTree = "<group>"; };
+		401F3B0C21B0FAB400C6A710 /* ContactRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRoom.swift; sourceTree = "<group>"; };
 		40667854215484C80037B573 /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
 		40BFF46C21670A95008C73F4 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		40BFF46F2167195D008C73F4 /* UIColor+ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ThemeColor.swift"; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 			children = (
 				40F2C8CA214B6E800065E969 /* ContactsViewController.swift */,
 				40667854215484C80037B573 /* AddContactViewController.swift */,
+				401F3B0A21B0F5DB00C6A710 /* ContactsRoomViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -95,6 +100,7 @@
 		40240D7221674E7C00F7F6B1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				401F3B0C21B0FAB400C6A710 /* ContactRoom.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -394,10 +400,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				401F3B0B21B0F5DB00C6A710 /* ContactsRoomViewController.swift in Sources */,
 				40667855215484C80037B573 /* AddContactViewController.swift in Sources */,
 				40BFF4702167195D008C73F4 /* UIColor+ThemeColor.swift in Sources */,
 				40F2C8D1214B6E800065E969 /* ContactsApp.xcdatamodeld in Sources */,
 				40F2C8CB214B6E800065E969 /* ContactsViewController.swift in Sources */,
+				401F3B0D21B0FAB400C6A710 /* ContactRoom.swift in Sources */,
 				40BFF46D21670A95008C73F4 /* CardCollectionViewCell.swift in Sources */,
 				40F2C8C9214B6E800065E969 /* AppDelegate.swift in Sources */,
 			);
